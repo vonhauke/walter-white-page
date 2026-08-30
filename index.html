@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Heisenberg | Dossiê</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Bebas+Neue&display=swap');
+
+  :root {
+    --clay-black: #1a1410;
+    --terracotta: #c1502e;
+    --turquoise: #3a8f8c;
+    --sand: #e8dcc4;
+    --dust: #a8845f;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--clay-black);
+    color: var(--sand);
+    font-family: 'Space Mono', monospace;
+    line-height: 1.6;
+  }
+
+  .hero {
+    min-height: 92vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 2rem;
+    position: relative;
+    background:
+      linear-gradient(180deg, rgba(26,20,16,0.55), rgba(26,20,16,0.92)),
+      var(--clay-black);
+    background-size: cover;
+    background-position: center;
+    border-bottom: 1px solid rgba(193,80,46,0.25);
+    overflow: hidden;
+  }
+
+  /* Para foto de fundo no hero: descomente a tag .hero-photo abaixo no HTML
+     e coloque o arquivo em images/hero-deserto.jpg */
+
+  .hero-photo {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    inset: 0;
+    object-fit: cover;
+    opacity: 0.35;
+    z-index: 0;
+  }
+
+  .hero-content { position: relative; z-index: 1; }
+
+  .element-badge {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+    justify-content: center;
+  }
+
+  .element {
+    border: 3px solid var(--terracotta);
+    color: var(--terracotta);
+    width: 90px;
+    height: 90px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Bebas Neue', sans-serif;
+    position: relative;
+    background: rgba(26,20,16,0.6);
+  }
+  .element .num {
+    position: absolute;
+    top: 4px;
+    left: 6px;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+  }
+  .element .sym { font-size: 2.4rem; line-height: 1; }
+  .element .name {
+    font-size: 0.55rem;
+    letter-spacing: 0.15em;
+    margin-top: 2px;
+  }
+
+  h1.title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(3rem, 10vw, 7rem);
+    letter-spacing: 0.05em;
+    color: var(--sand);
+    text-shadow: 0 0 30px rgba(193,80,46,0.25);
+  }
+
+  .subtitle {
+    color: var(--turquoise);
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    margin-top: 0.8rem;
+  }
+
+  .scroll-cue {
+    position: absolute;
+    bottom: 2rem;
+    font-size: 0.7rem;
+    color: rgba(232,220,196,0.4);
+    letter-spacing: 0.2em;
+    z-index: 1;
+  }
+
+  section {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 5rem 1.5rem;
+    border-bottom: 1px solid rgba(232,220,196,0.08);
+  }
+
+  .eyebrow {
+    color: var(--turquoise);
+    font-size: 0.75rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    margin-bottom: 0.8rem;
+  }
+
+  h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.4rem;
+    letter-spacing: 0.03em;
+    color: var(--sand);
+    margin-bottom: 1.5rem;
+  }
+
+  p { color: var(--dust); font-size: 0.95rem; max-width: 62ch; }
+  p + p { margin-top: 1rem; }
+
+  .portrait-wrap {
+    margin-top: 2rem;
+    border: 1px solid rgba(193,80,46,0.4);
+    padding: 0.6rem;
+    max-width: 320px;
+  }
+  .portrait-wrap img {
+    display: block;
+    width: 100%;
+    height: auto;
+    filter: sepia(0.25) contrast(1.05);
+  }
+  .portrait-caption {
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    color: var(--dust);
+    margin-top: 0.5rem;
+    text-align: center;
+  }
+
+  .purity-wrap { margin-top: 2rem; }
+  .purity-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.75rem;
+    color: var(--terracotta);
+    letter-spacing: 0.1em;
+    margin-bottom: 0.4rem;
+  }
+  .purity-bar {
+    height: 14px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(58,143,140,0.4);
+    position: relative;
+    overflow: hidden;
+  }
+  .purity-fill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #2a6663, var(--turquoise));
+    transition: width 1.8s ease;
+  }
+
+  .timeline { list-style: none; margin-top: 2rem; }
+  .timeline li {
+    display: grid;
+    grid-template-columns: 90px 1fr;
+    gap: 1.2rem;
+    padding: 1rem 0;
+    border-top: 1px dashed rgba(232,220,196,0.15);
+  }
+  .timeline li:first-child { border-top: none; }
+  .timeline .stage {
+    font-family: 'Bebas Neue', sans-serif;
+    color: var(--terracotta);
+    font-size: 1rem;
+  }
+  .timeline .desc { font-size: 0.88rem; color: var(--dust); }
+
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 0.8rem;
+    margin-top: 2rem;
+  }
+  .gallery img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border: 1px solid rgba(193,80,46,0.3);
+    filter: sepia(0.2) contrast(1.05);
+  }
+
+  .principle {
+    border-left: 3px solid var(--terracotta);
+    padding-left: 1.5rem;
+    font-size: 1.1rem;
+    color: var(--sand);
+    font-style: italic;
+    margin-top: 2rem;
+  }
+
+  footer {
+    text-align: center;
+    padding: 3rem 1.5rem;
+    font-size: 0.7rem;
+    color: rgba(232,220,196,0.35);
+    letter-spacing: 0.15em;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .purity-fill { transition: none; }
+  }
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <!-- Para usar uma foto de fundo, descomente a linha abaixo -->
+  <!-- <img class="hero-photo" src="images/foto1.webp" alt=""> -->
+  <div class="hero-content">
+    <div class="element-badge">
+      <div class="element"><span class="num">35</span><span class="sym">Br</span><span class="name">BROMO</span></div>
+      <div class="element"><span class="num">56</span><span class="sym">Ba</span><span class="name">BÁRIO</span></div>
+    </div>
+    <h1 class="title">Walter White</h1>
+    <p class="subtitle">Professor · Químico · Heisenberg</p>
+  </div>
+  <div class="scroll-cue">role para o dossiê ↓</div>
+</section>
+
+<section>
+  <div class="eyebrow">Perfil</div>
+  <h2>Do quadro-negro ao laboratório</h2>
+  <p>
+    Walter White começa como professor de química do ensino médio em Albuquerque,
+    Novo México — um homem de talento reconhecido, mas de ambições contidas por
+    décadas de escolhas cautelosas. Um diagnóstico inesperado é o estopim que
+    o empurra para fora dessa vida pequena.
+  </p>
+  <p>
+    O que se segue é a transformação de um homem comum em uma figura que passa
+    a operar sob o pseudônimo de Heisenberg — um nome emprestado da física
+    quântica, sugerindo que, a partir de certo ponto, observar Walter já muda
+    o que ele é.
+  </p>
+
+  <!-- Foto de perfil / retrato -->
+  <div class="portrait-wrap">
+    <img src="images/foto2.webp" alt="Retrato">
+    <div class="portrait-caption">ALBUQUERQUE, NOVO MÉXICO</div>
+  </div>
+</section>
+
+<section>
+  <div class="eyebrow">Método</div>
+  <h2>Precisão acima de tudo</h2>
+  <p>
+    A identidade de Walter se apoia na ideia de excelência técnica: cada etapa
+    do processo é tratada com o rigor de quem foi, antes de tudo, um cientista.
+    Essa obsessão pela pureza do produto funciona como metáfora — quanto mais
+    ele busca controle absoluto sobre o resultado, menos controle mantém sobre
+    a própria vida.
+  </p>
+
+  <div class="purity-wrap">
+    <div class="purity-label">
+      <span>PUREZA DO PRODUTO</span>
+      <span id="purity-value">0%</span>
+    </div>
+    <div class="purity-bar">
+      <div class="purity-fill" id="purity-fill"></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="eyebrow">Trajetória</div>
+  <h2>Uma linha que só desce</h2>
+  <ul class="timeline">
+    <li>
+      <span class="stage">ATO I</span>
+      <span class="desc">Professor discreto, pai de família, sócio minoritário do próprio talento.</span>
+    </li>
+    <li>
+      <span class="stage">ATO II</span>
+      <span class="desc">O pseudônimo Heisenberg nasce como proteção — e rapidamente vira identidade.</span>
+    </li>
+    <li>
+      <span class="stage">ATO III</span>
+      <span class="desc">As justificativas para os próprios atos ficam cada vez mais elaboradas.</span>
+    </li>
+    <li>
+      <span class="stage">ATO IV</span>
+      <span class="desc">O homem que dizia agir pela família passa a agir, sobretudo, por orgulho.</span>
+    </li>
+  </ul>
+
+  <p class="principle">
+    "Eu fiz isso pela família" é a frase que ele repete — e a que menos
+    resiste ao próprio exame, à medida que a história avança.
+  </p>
+</section>
+
+<section>
+  <div class="eyebrow">Galeria</div>
+  <h2>Registros</h2>
+  <p>Troque os arquivos abaixo pelos nomes das suas próprias imagens.</p>
+  <div class="gallery">
+    <img src="images/foto3.webp" alt="Registro 1">
+    <img src="images/foto4.webp" alt="Registro 2">
+    <img src="images/foto5.webp" alt="Registro 3">
+  </div>
+</section>
+
+<footer>
+  DOSSIÊ NÃO OFICIAL · PROJETO DE ESTUDO EM HTML/CSS · FEITO POR PEDRO
+</footer>
+
+<script>
+  window.addEventListener('DOMContentLoaded', () => {
+    setTimeout(() => {
+      document.getElementById('purity-fill').style.width = '99%';
+      document.getElementById('purity-value').textContent = '99.1%';
+    }, 400);
+  });
+</script>
+
+</body>
+</html>
