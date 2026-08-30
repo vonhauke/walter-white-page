@@ -42,9 +42,6 @@
     overflow: hidden;
   }
 
-  /* Para foto de fundo no hero: descomente a tag .hero-photo abaixo no HTML
-     e coloque o arquivo em images/hero-deserto.jpg */
-
   .hero-photo {
     width: 100%;
     height: 100%;
@@ -142,70 +139,12 @@
   p { color: var(--dust); font-size: 0.95rem; max-width: 62ch; }
   p + p { margin-top: 1rem; }
 
-  .portrait-wrap {
-    margin-top: 2rem;
-    border: 1px solid rgba(193,80,46,0.4);
-    padding: 0.6rem;
-    max-width: 320px;
-  }
-  .portrait-wrap img {
-    display: block;
-    width: 100%;
-    height: auto;
-    filter: sepia(0.25) contrast(1.05);
-  }
-  .portrait-caption {
-    font-size: 0.7rem;
-    letter-spacing: 0.1em;
-    color: var(--dust);
-    margin-top: 0.5rem;
-    text-align: center;
-  }
-
-  .purity-wrap { margin-top: 2rem; }
-  .purity-label {
-    display: flex;
-    justify-content: space-between;
-    font-size: 0.75rem;
-    color: var(--terracotta);
-    letter-spacing: 0.1em;
-    margin-bottom: 0.4rem;
-  }
-  .purity-bar {
-    height: 14px;
-    background: rgba(255,255,255,0.06);
-    border: 1px solid rgba(58,143,140,0.4);
-    position: relative;
-    overflow: hidden;
-  }
-  .purity-fill {
-    height: 100%;
-    width: 0%;
-    background: linear-gradient(90deg, #2a6663, var(--turquoise));
-    transition: width 1.8s ease;
-  }
-
-  .timeline { list-style: none; margin-top: 2rem; }
-  .timeline li {
-    display: grid;
-    grid-template-columns: 90px 1fr;
-    gap: 1.2rem;
-    padding: 1rem 0;
-    border-top: 1px dashed rgba(232,220,196,0.15);
-  }
-  .timeline li:first-child { border-top: none; }
-  .timeline .stage {
-    font-family: 'Bebas Neue', sans-serif;
-    color: var(--terracotta);
-    font-size: 1rem;
-  }
-  .timeline .desc { font-size: 0.88rem; color: var(--dust); }
-
+  /* GALERIA POR TEMPORADA */
   .gallery {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
     gap: 0.8rem;
-    margin-top: 2rem;
+    margin: 2rem 0 2.5rem;
   }
   .gallery img {
     width: 100%;
@@ -215,13 +154,12 @@
     filter: sepia(0.2) contrast(1.05);
   }
 
-  .principle {
-    border-left: 3px solid var(--terracotta);
-    padding-left: 1.5rem;
+  .season-index {
+    font-family: 'Bebas Neue', sans-serif;
+    color: var(--terracotta);
     font-size: 1.1rem;
-    color: var(--sand);
-    font-style: italic;
-    margin-top: 2rem;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.3rem;
   }
 
   footer {
@@ -231,17 +169,13 @@
     color: rgba(232,220,196,0.35);
     letter-spacing: 0.15em;
   }
-
-  @media (prefers-reduced-motion: reduce) {
-    .purity-fill { transition: none; }
-  }
 </style>
 </head>
 <body>
 
 <section class="hero">
-  <!-- Para usar uma foto de fundo, descomente a linha abaixo -->
-  <!-- <img class="hero-photo" src="images/foto1.webp" alt=""> -->
+  <!-- Para foto de fundo, descomente a linha abaixo -->
+  <!-- <img class="hero-photo" src="images/foto-capa.jpg" alt=""> -->
   <div class="hero-content">
     <div class="element-badge">
       <div class="element"><span class="num">35</span><span class="sym">Br</span><span class="name">BROMO</span></div>
@@ -253,102 +187,124 @@
   <div class="scroll-cue">role para o dossiê ↓</div>
 </section>
 
-<section>
-  <div class="eyebrow">Perfil</div>
-  <h2>Do quadro-negro ao laboratório</h2>
-  <p>
-    Walter White começa como professor de química do ensino médio em Albuquerque,
-    Novo México — um homem de talento reconhecido, mas de ambições contidas por
-    décadas de escolhas cautelosas. Um diagnóstico inesperado é o estopim que
-    o empurra para fora dessa vida pequena.
-  </p>
-  <p>
-    O que se segue é a transformação de um homem comum em uma figura que passa
-    a operar sob o pseudônimo de Heisenberg — um nome emprestado da física
-    quântica, sugerindo que, a partir de certo ponto, observar Walter já muda
-    o que ele é.
-  </p>
+<!-- ===================== TEMPORADA 1 ===================== -->
+<section id="temporada-1">
+  <div class="season-index">TEMPORADA 01</div>
+  <div class="eyebrow">2008</div>
+  <h2>O Início</h2>
 
-  <!-- Foto de perfil / retrato -->
-  <div class="portrait-wrap">
-    <img src="images/foto2.webp" alt="Retrato">
-    <div class="portrait-caption">ALBUQUERQUE, NOVO MÉXICO</div>
-  </div>
-</section>
-
-<section>
-  <div class="eyebrow">Método</div>
-  <h2>Precisão acima de tudo</h2>
-  <p>
-    A identidade de Walter se apoia na ideia de excelência técnica: cada etapa
-    do processo é tratada com o rigor de quem foi, antes de tudo, um cientista.
-    Essa obsessão pela pureza do produto funciona como metáfora — quanto mais
-    ele busca controle absoluto sobre o resultado, menos controle mantém sobre
-    a própria vida.
-  </p>
-
-  <div class="purity-wrap">
-    <div class="purity-label">
-      <span>PUREZA DO PRODUTO</span>
-      <span id="purity-value">0%</span>
-    </div>
-    <div class="purity-bar">
-      <div class="purity-fill" id="purity-fill"></div>
-    </div>
-  </div>
-</section>
-
-<section>
-  <div class="eyebrow">Trajetória</div>
-  <h2>Uma linha que só desce</h2>
-  <ul class="timeline">
-    <li>
-      <span class="stage">ATO I</span>
-      <span class="desc">Professor discreto, pai de família, sócio minoritário do próprio talento.</span>
-    </li>
-    <li>
-      <span class="stage">ATO II</span>
-      <span class="desc">O pseudônimo Heisenberg nasce como proteção — e rapidamente vira identidade.</span>
-    </li>
-    <li>
-      <span class="stage">ATO III</span>
-      <span class="desc">As justificativas para os próprios atos ficam cada vez mais elaboradas.</span>
-    </li>
-    <li>
-      <span class="stage">ATO IV</span>
-      <span class="desc">O homem que dizia agir pela família passa a agir, sobretudo, por orgulho.</span>
-    </li>
-  </ul>
-
-  <p class="principle">
-    "Eu fiz isso pela família" é a frase que ele repete — e a que menos
-    resiste ao próprio exame, à medida que a história avança.
-  </p>
-</section>
-
-<section>
-  <div class="eyebrow">Galeria</div>
-  <h2>Registros</h2>
-  <p>Troque os arquivos abaixo pelos nomes das suas próprias imagens.</p>
   <div class="gallery">
-    <img src="images/foto3.webp" alt="Registro 1">
-    <img src="images/foto4.webp" alt="Registro 2">
-    <img src="images/foto5.webp" alt="Registro 3">
+    <img src="images/temporada1-1.jpg" alt="Temporada 1 - Foto 1">
+    <img src="images/temporada1-2.jpg" alt="Temporada 1 - Foto 2">
+    <img src="images/temporada1-3.jpg" alt="Temporada 1 - Foto 3">
   </div>
+
+  <p>Walter White vive uma rotina modesta como professor de química do ensino médio em Albuquerque, dividindo seu tempo entre a sala de aula e um segundo emprego num lava-rápido, mal o suficiente para sustentar a casa. Ele é um homem de talento reconhecido academicamente, mas cuja carreira nunca correspondeu ao seu potencial, algo que carrega como uma frustração silenciosa. A notícia de um câncer de pulmão em estágio avançado muda tudo: de repente, o tempo que lhe resta passa a valer mais do que qualquer cautela acumulada ao longo da vida. É esse diagnóstico que o empurra para uma decisão radical, movida pelo medo de deixar a família desamparada.</p>
+
+  <p>A virada acontece quando ele reencontra Jesse Pinkman, um ex-aluno que atua na produção e venda de metanfetamina em pequena escala. Walter enxerga ali uma oportunidade: aplicar seu conhecimento de química para produzir um produto de pureza excepcional, muito acima do padrão do mercado. A parceria nasce desconfortável, cheia de atritos entre o rigor técnico de Walter e a informalidade arriscada de Jesse, mas funciona — o produto que os dois criam se destaca imediatamente pela qualidade.</p>
+
+  <p>Ao mesmo tempo, a vida doméstica de Walter segue um curso paralelo e cada vez mais tenso. Sua esposa, Skyler, está grávida do segundo filho do casal, e o filho mais velho, Walter Jr., lida com paralisia cerebral sem saber nada da dupla vida que o pai está construindo. Hank, cunhado de Walter e agente da DEA, investiga o submundo das drogas na região sem imaginar que está cada vez mais próximo de casa. Essa proximidade gera um dos primeiros grandes ganchos dramáticos da série.</p>
+
+  <p>Cada decisão nessa fase inicial ainda é cercada de justificativas: Walter repete para si mesmo que tudo é temporário, que existe um valor-limite a ser alcançado antes de parar. O nome Heisenberg surge como um disfarce prático, uma forma de proteger a identidade durante os primeiros contatos com o submundo do tráfico. Mas o disfarce já carrega uma sedução perigosa — a sensação de poder e competência que Walter nunca havia experimentado na vida cotidiana.</p>
+
+  <p>A temporada termina evidenciando que o ponto sem retorno já foi cruzado, mesmo que os personagens ainda não o percebam com clareza. As mentiras se acumulam, os riscos físicos aumentam, e a linha entre o professor cauteloso e o criminoso calculista começa a se apagar. É o alicerce sobre o qual toda a queda posterior será construída, plantando sementes de conflitos que vão amadurecer nas temporadas seguintes.</p>
+</section>
+
+<!-- ===================== TEMPORADA 2 ===================== -->
+<section id="temporada-2">
+  <div class="season-index">TEMPORADA 02</div>
+  <div class="eyebrow">2009</div>
+  <h2>Contaminação</h2>
+
+  <div class="gallery">
+    <img src="images/temporada2-1.jpg" alt="Temporada 2 - Foto 1">
+    <img src="images/temporada2-2.jpg" alt="Temporada 2 - Foto 2">
+    <img src="images/temporada2-3.jpg" alt="Temporada 2 - Foto 3">
+  </div>
+
+  <p>Se a primeira temporada mostra a entrada de Walter nesse mundo, a segunda mostra o preço de permanecer nele. As consequências deixam de ser hipotéticas: decisões tomadas sob pressão passam a gerar corpos, desconfiança e destruição que se espalham para pessoas que nada têm a ver com o negócio. A relação entre Walter e Jesse se aprofunda, mas também se contamina por manipulação, ressentimento e dependência mútua, um padrão que vai se repetir ao longo de toda a série.</p>
+
+  <p>Jesse enfrenta o colapso de uma relação importante em sua vida, e essa perda o empurra para um período de autodestruição marcado pelo abuso de substâncias. Walter, por sua vez, observa esse processo com uma mistura de culpa velada e cálculo frio, incapaz de admitir o quanto de responsabilidade cabe a ele nos rumos que a vida do parceiro está tomando. A relação entre os dois se torna mais complexa: já não são apenas sócios, são reféns um do outro.</p>
+
+  <p>Em paralelo, a expansão do negócio exige contato com figuras cada vez mais perigosas, revelando a Walter que competência técnica não é proteção suficiente num universo regido por violência. Cada nova ameaça é neutralizada com um grau maior de frieza, e o que antes parecia impensável se torna apenas mais uma ferramenta disponível. É nessa temporada que a série começa a testar até onde o espectador está disposto a acompanhar o protagonista sem julgá-lo.</p>
+
+  <p>A vida familiar de Walter continua se deteriorando por baixo da superfície: a gravidez de Skyler avança, mas o casamento se torna cada vez mais marcado por segredos, desconfiança e distanciamento emocional. Walter Jr. permanece alheio à verdade, tratando o pai com um respeito que soa cada vez mais irônico para quem acompanha a história de fora. A sensação geral é de que a vida "normal" da família está sendo mantida artificialmente, como uma fachada cada vez mais frágil.</p>
+
+  <p>O fechamento da temporada traz um dos momentos mais marcantes da série: uma tragédia aérea que conecta, de forma indireta mas inegável, as escolhas privadas de Walter a uma perda coletiva e pública. É um lembrete visual e narrativo de que as consequências de suas ações já não podem ser contidas dentro da própria vida — elas vazam para o mundo ao redor, atingindo pessoas que nunca souberam de sua existência.</p>
+</section>
+
+<!-- ===================== TEMPORADA 3 ===================== -->
+<section id="temporada-3">
+  <div class="season-index">TEMPORADA 03</div>
+  <div class="eyebrow">2010</div>
+  <h2>Novos Patrões</h2>
+
+  <div class="gallery">
+    <img src="images/temporada3-1.jpg" alt="Temporada 3 - Foto 1">
+    <img src="images/temporada3-2.jpg" alt="Temporada 3 - Foto 2">
+    <img src="images/temporada3-3.jpg" alt="Temporada 3 - Foto 3">
+  </div>
+
+  <p>A terceira temporada introduz uma mudança de escala: Walter deixa de operar como um agente independente e passa a fazer parte de uma estrutura muito maior e mais sofisticada, comandada por Gustavo Fring, um empresário respeitado que esconde, sob a fachada de uma rede de lanchonetes, uma operação de distribuição de drogas meticulosamente organizada. Esse novo patamar oferece a Walter recursos que ele nunca teve — um laboratório de altíssimo nível, segurança e distância física dos riscos mais brutos da rua.</p>
+
+  <p>Mas o preço dessa estrutura é a perda de autonomia. Walter, acostumado a controlar cada variável, se vê subordinado a uma hierarquia que não hesita em usar de força quando necessário, e que enxerga tanto ele quanto Jesse como peças substituíveis. A tensão entre o desejo de Walter por reconhecimento e a exigência de discrição imposta por Gus cria um dos conflitos centrais da temporada, alimentando um jogo de poder silencioso mas constante.</p>
+
+  <p>Jesse, por sua vez, passa por um processo de amadurecimento doloroso. Longe da influência direta de Walter, ele começa a desenvolver sua própria consciência sobre a gravidade do que fazem, especialmente ao presenciar de perto as consequências humanas do negócio. Esse distanciamento moral entre os dois personagens vai se tornando um dos eixos emocionais mais fortes da série, prenunciando rupturas que ainda estão por vir.</p>
+
+  <p>No âmbito familiar, o segredo finalmente rompe a superfície: Skyler descobre a verdade sobre a dupla vida do marido, e a reação dela introduz uma nova dinâmica ao casamento — não mais de ignorância, mas de cumplicidade forçada e negociação moral. Hank, ferido gravemente num confronto ligado indiretamente ao próprio Walter, entra numa fase de recuperação física e psicológica que reconfigura sua relação com o trabalho e com a própria vulnerabilidade.</p>
+
+  <p>A temporada termina com Jesse sendo empurrado, por manipulação direta de Walter, a cometer um ato que vai selar de forma definitiva o quanto ele já foi corrompido pelo mundo em que foi inserido. É um desfecho que reposiciona Jesse não mais como coadjuvante ingênuo, mas como personagem carregando um peso moral que vai definir sua trajetória dali em diante.</p>
+</section>
+
+<!-- ===================== TEMPORADA 4 ===================== -->
+<section id="temporada-4">
+  <div class="season-index">TEMPORADA 04</div>
+  <div class="eyebrow">2011</div>
+  <h2>Guerra Fria</h2>
+
+  <div class="gallery">
+    <img src="images/temporada4-1.jpg" alt="Temporada 4 - Foto 1">
+    <img src="images/temporada4-2.jpg" alt="Temporada 4 - Foto 2">
+    <img src="images/temporada4-3.jpg" alt="Temporada 4 - Foto 3">
+  </div>
+
+  <p>A quarta temporada transforma a relação entre Walter e Gus Fring numa disputa de poder silenciosa, quase de xadrez, em que cada movimento é calculado e a violência explícita cede espaço à manipulação estratégica. Walter percebe que sua utilidade técnica não é garantia de sobrevivência dentro dessa organização, e passa a agir por conta própria para tentar recuperar controle sobre o próprio destino, mesmo sem recursos ou aliados evidentes.</p>
+
+  <p>Essa disputa expõe o quanto Walter está disposto a sacrificar em nome da própria permanência no jogo. Decisões que antes exigiriam alguma hesitação passam a ser tomadas com uma frieza cada vez mais alarmante, incluindo manipulações que colocam em risco pessoas próximas a Jesse. A linha entre proteger a família e proteger o próprio ego — ou a própria vaidade de ser reconhecido como o melhor no que faz — fica cada vez mais difícil de traçar.</p>
+
+  <p>Hank, já recuperado fisicamente, canaliza sua energia para uma investigação obstinada sobre a identidade de Heisenberg, sem perceber o quanto está fisicamente próximo da resposta que procura. Essa busca, conduzida com crescente intensidade profissional, cria uma ironia dramática constante: o espectador sabe o que Hank ainda não sabe, e cada cena entre os dois cunhados carrega uma tensão que não depende de diálogo explícito para existir.</p>
+
+  <p>Jesse, arrasado por perdas emocionais acumuladas, se aproxima cada vez mais de Gus Fring, encontrando ali uma espécie de reconhecimento profissional que nunca recebeu de Walter. Essa aproximação cria uma nova camada de desconfiança entre os dois antigos parceiros, com Walter observando, com ciúme mal disfarçado, o deslocamento da lealdade de Jesse. A parceria que sustentava toda a história começa a mostrar rachaduras estruturais.</p>
+
+  <p>O confronto final entre Walter e Gus Fring encerra a temporada com um dos desfechos mais emblemáticos da série, resolvido por meio de um plano meticuloso que mistura química, paciência e manipulação psicológica. É a vitória mais decisiva de Walter até aquele ponto — mas também a que deixa mais claro o quanto ele já se tornou capaz de orquestrar violência em nome da própria sobrevivência e ambição.</p>
+</section>
+
+<!-- ===================== TEMPORADA 5 ===================== -->
+<section id="temporada-5">
+  <div class="season-index">TEMPORADA 05</div>
+  <div class="eyebrow">2012–2013</div>
+  <h2>O Império e a Queda</h2>
+
+  <div class="gallery">
+    <img src="images/temporada5-1.jpg" alt="Temporada 5 - Foto 1">
+    <img src="images/temporada5-2.jpg" alt="Temporada 5 - Foto 2">
+    <img src="images/temporada5-3.jpg" alt="Temporada 5 - Foto 3">
+  </div>
+
+  <p>Livre da sombra de Gus Fring, Walter finalmente alcança aquilo que buscava desde o início: controle total sobre um império que ele mesmo constrói, sem intermediários acima dele. Essa fase expõe, de forma mais nua do que nunca, que a motivação original — proteger a família diante da própria mortalidade — já não é mais suficiente para explicar suas escolhas. O que resta é orgulho, ambição e a necessidade de ser reconhecido como o melhor em algo, mesmo que esse algo seja profundamente destrutivo.</p>
+
+  <p>A operação cresce em volume e sofisticação, gerando uma riqueza que ultrapassa qualquer necessidade prática, a ponto de o próprio dinheiro se tornar um problema logístico e simbólico. Esse excesso funciona como espelho da desproporção entre o que Walter originalmente dizia buscar e o que de fato conquistou. Jesse, cada vez mais consumido pela culpa, se distancia definitivamente do universo que ajudou a construir, buscando qualquer saída que lhe permita algum tipo de redenção.</p>
+
+  <p>O ponto de virada mais decisivo da temporada acontece quando Hank finalmente conecta as peças e descobre, de forma direta e pessoal, que Heisenberg sempre esteve dentro de sua própria família. Essa revelação destrói de vez a fachada que sustentava as relações familiares até ali, transformando cada encontro doméstico subsequente numa negociação tensa entre lealdade de sangue e dever profissional.</p>
+
+  <p>A queda de Walter se torna então inevitável e progressivamente pública: relações se rompem, aliados se tornam inimigos, e a proteção que o dinheiro e a inteligência ofereciam por tanto tempo se mostra insuficiente diante do colapso que ele mesmo ajudou a construir. Isolado, ele é forçado a confrontar, sem os disfarces de outrora, o tipo de homem em que realmente se transformou ao longo da jornada.</p>
+
+  <p>No desfecho, Walter retorna de um exílio autoimposto não mais em busca de redenção fácil, mas para tentar corrigir, à sua maneira imperfeita e tardia, alguns dos danos que causou — especialmente em relação a Jesse. É um final que não absolve o personagem, mas oferece uma última tentativa de coerência entre quem ele se tornou e os poucos vínculos que ainda restam para proteger.</p>
 </section>
 
 <footer>
   DOSSIÊ NÃO OFICIAL · PROJETO DE ESTUDO EM HTML/CSS · FEITO POR PEDRO
 </footer>
-
-<script>
-  window.addEventListener('DOMContentLoaded', () => {
-    setTimeout(() => {
-      document.getElementById('purity-fill').style.width = '99%';
-      document.getElementById('purity-value').textContent = '99.1%';
-    }, 400);
-  });
-</script>
 
 </body>
 </html>
