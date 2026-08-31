@@ -88,6 +88,14 @@
     margin-top: 2px;
   }
 
+  .logo {
+    max-width: 480px;
+    width: 80%;
+    height: auto;
+    margin-bottom: 0.5rem;
+    filter: drop-shadow(0 0 30px rgba(193,80,46,0.25));
+  }
+
   h1.title {
     font-family: 'Bebas Neue', sans-serif;
     font-size: clamp(3rem, 10vw, 7rem);
@@ -169,19 +177,31 @@
     color: rgba(232,220,196,0.35);
     letter-spacing: 0.15em;
   }
+  .corner-portrait {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 110px;
+    height: auto;
+    border: 2px solid var(--terracotta);
+    filter: sepia(0.2) contrast(1.05);
+    z-index: 100;
+  }
+
+  @media (max-width: 600px) {
+    .corner-portrait { width: 70px; top: 12px; right: 12px; }
+  }
 </style>
 </head>
 <body>
+
+<img class="corner-portrait" src="images/heisenberg.png" alt="Walter White">
 
 <section class="hero">
   <!-- Para foto de fundo, descomente a linha abaixo -->
   <!-- <img class="hero-photo" src="images/foto-capa.jpg" alt=""> -->
   <div class="hero-content">
-    <div class="element-badge">
-      <div class="element"><span class="num">35</span><span class="sym">Br</span><span class="name">BROMO</span></div>
-      <div class="element"><span class="num">56</span><span class="sym">Ba</span><span class="name">BÁRIO</span></div>
-    </div>
-    <h1 class="title">Walter White</h1>
+    <img class="logo" src="images/logo.png" alt="Logo">
     <p class="subtitle">Professor · Químico · Heisenberg</p>
   </div>
   <div class="scroll-cue">role para o dossiê ↓</div>
